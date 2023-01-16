@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/latest_game_item_wrapper"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:backgroundTint="@color/black_blue"
+    android:elevation="10dp"
+    android:orientation="horizontal"
+    android:layout_marginBottom="10dp"
+    card_view:cardCornerRadius="14dp"
+    card_view:cardElevation="10dp"
+    card_view:cardMaxElevation="1dp">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/item_img"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:contentDescription="@string/image_game"
+            android:scaleType="fitXY"
+            android:src="@mipmap/ic_launcher" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/item_img">
+
+            <TextView
+                android:id="@+id/item_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="5dp"
+                android:maxLines="2"
+                android:text="@string/game_name"
+                android:textColor="@color/white"
+                android:textSize="17sp"
+                android:layout_marginEnd="4dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/item_release"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/item_name"
+                android:layout_marginStart="16dp"
+                android:ellipsize="end"
+                android:justificationMode="inter_word"
+                android:maxLines="1"
+                android:text="@string/example_date"
+                android:textColor="#84878e"
+                android:textSize="12sp" />
+            <TextView
+                android:id="@+id/parent_platform"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/item_release"
+                android:layout_marginStart="16dp"
+                android:ellipsize="end"
+                android:layout_marginTop="4dp"
+                android:justificationMode="inter_word"
+                android:maxLines="1"
+                android:text="@string/example_parent_platform"
+                android:textColor="#84878e"
+                android:textSize="12sp" />
+
+            <ImageView
+                android:id="@+id/item_star_img"
+                android:layout_width="16dp"
+                app:tint="@color/yellow_star"
+                android:layout_height="16dp"
+                android:layout_below="@id/parent_platform"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="4dp"
+                android:contentDescription="@string/rate"
+                android:src="@drawable/ic_star_rate" />
+
+            <TextView
+                android:id="@+id/item_rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/parent_platform"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="4dp"
+                android:layout_toEndOf="@id/item_star_img"
+                android:text="@string/example_rate"
+                android:textColor="@color/yellow_star"
+                android:textSize="12sp" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

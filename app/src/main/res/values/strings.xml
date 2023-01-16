@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">RAWG Bootcamp IDN</string>
+    <string name="image_game">Image Game</string>
+    <string name="game_name">Game Name</string>
+    <string name="example_date">13–03–2045</string>
+    <string name="rate">rate</string>
+    <string name="example_rate">4.9</string>
+    <string name="game_store">Game Store</string>
+    <string name="user_logo">User Logo</string>
+    <string name="best_game_title">Best Game in 2022</string>
+    <string name="failed_to_fetch_data">Failed to fetch data.</string>
+    <string name="warning">warning</string>
+    <string name="example_parent_platform">PC Playstation Xbox 360</string>
+    <string name="refresh">refresh</string>
 </resources>

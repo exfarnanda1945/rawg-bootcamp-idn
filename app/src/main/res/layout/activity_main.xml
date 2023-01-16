@@ -30,12 +30,25 @@
             tools:ignore="RelativeOverlap" />
 
         <ImageView
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:layout_alignParentEnd="true"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginEnd="8dp"
             android:layout_centerVertical="true"
+            android:layout_toStartOf="@id/favorite_icon"
             android:contentDescription="@string/user_logo"
             android:src="@drawable/gamer" />
+
+        <ImageView
+            android:id="@+id/favorite_icon"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:contentDescription="@string/user_logo"
+            android:src="@drawable/ic_favorite"
+            app:tint="@color/pink_heart"
+            />
+
     </RelativeLayout>
 
     <TextView

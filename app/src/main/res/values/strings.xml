@@ -23,4 +23,5 @@
     <string name="screenshots_game">Screenshots Game</string>
     <string name="screenshots">Screenshots</string>
     <string name="add_to_favorite">Add To Favorite</string>
+    <string name="favorites_empty">Favorites Empty</string>
 </resources>

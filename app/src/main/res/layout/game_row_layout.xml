@@ -1,100 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/latest_game_item_wrapper"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginBottom="10dp"
-    android:backgroundTint="@color/black_blue"
-    android:elevation="10dp"
-    android:orientation="horizontal"
-    card_view:cardCornerRadius="14dp"
-    card_view:cardElevation="10dp"
-    card_view:cardMaxElevation="1dp">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <RelativeLayout
+    <data>
+
+        <variable
+            name="data"
+            type="com.example.rawgbootcampidn.model.GameResult" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/latest_game_item_wrapper"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <ImageView
-            android:id="@+id/item_img"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:contentDescription="@string/image_game"
-            android:scaleType="fitXY"
-            android:src="@mipmap/ic_launcher" />
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:backgroundTint="@color/black_blue"
+        android:elevation="10dp"
+        android:orientation="horizontal"
+        card_view:cardCornerRadius="14dp"
+        card_view:cardElevation="10dp"
+        card_view:cardMaxElevation="1dp">
 
         <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_toEndOf="@id/item_img">
-
-            <TextView
-                android:id="@+id/item_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="4dp"
-                android:maxLines="2"
-                android:text="@string/game_name"
-                android:textColor="@color/white"
-                android:textSize="17sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/item_release"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/item_name"
-                android:layout_marginStart="16dp"
-                android:ellipsize="end"
-                android:justificationMode="inter_word"
-                android:maxLines="1"
-                android:text="@string/example_date"
-                android:textColor="@color/light_gray"
-                android:textSize="12sp" />
-
-            <TextView
-                android:id="@+id/parent_platform"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/item_release"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="4dp"
-                android:ellipsize="end"
-                android:justificationMode="inter_word"
-                android:maxLines="1"
-                android:text="@string/example_parent_platform"
-                android:textColor="@color/light_gray"
-                android:textSize="12sp" />
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/item_star_img"
-                android:layout_width="16dp"
-                android:layout_height="16dp"
-                android:layout_below="@id/parent_platform"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="4dp"
-                android:contentDescription="@string/rate"
-                android:src="@drawable/ic_star_rate"
-                app:tint="@color/yellow_star" />
+                android:id="@+id/item_img"
+                loadImageFromUrl="@{data.backgroundImage}"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:contentDescription="@string/image_game"
+                android:scaleType="fitXY"
+                android:src="@mipmap/ic_launcher" />
 
-            <TextView
-                android:id="@+id/item_rating"
+            <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/parent_platform"
-                android:layout_marginStart="4dp"
-                android:layout_marginTop="4dp"
-                android:layout_toEndOf="@id/item_star_img"
-                android:text="@string/example_rate"
-                android:textColor="@color/yellow_star"
-                android:textSize="12sp" />
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@id/item_img">
+
+                <TextView
+                    android:id="@+id/item_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="4dp"
+                    android:maxLines="2"
+                    android:text="@{data.name}"
+                    android:textColor="@color/white"
+                    android:textSize="17sp"
+                    android:textStyle="bold"
+                    tools:text="@string/game_name" />
+
+                <TextView
+                    android:id="@+id/item_release"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/item_name"
+                    android:layout_marginStart="16dp"
+                    android:ellipsize="end"
+                    android:justificationMode="inter_word"
+                    android:maxLines="1"
+                    android:text="@{data.released}"
+                    android:textColor="@color/light_gray"
+                    android:textSize="12sp"
+                    tools:text="@string/example_date" />
+
+                <TextView
+                    android:id="@+id/parent_platform"
+                    setParentPlatform="@{data.parentPlatforms}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/item_release"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="4dp"
+                    android:ellipsize="end"
+                    android:justificationMode="inter_word"
+                    android:maxLines="1"
+                    android:textColor="@color/light_gray"
+                    android:textSize="12sp"
+                    tools:text="@string/example_parent_platform" />
+
+                <ImageView
+                    android:id="@+id/item_star_img"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_below="@id/parent_platform"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="4dp"
+                    android:contentDescription="@string/rate"
+                    android:src="@drawable/ic_star_rate"
+                    app:tint="@color/yellow_star" />
+
+                <TextView
+                    android:id="@+id/item_rating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/parent_platform"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_toEndOf="@id/item_star_img"
+                    android:text="@{data.rating.toString()}"
+                    android:textColor="@color/yellow_star"
+                    android:textSize="12sp"
+                    tools:text="@string/example_rate" />
+            </RelativeLayout>
+
         </RelativeLayout>
 
-    </RelativeLayout>
-
-</androidx.cardview.widget.CardView>
+    </androidx.cardview.widget.CardView>
+</layout>

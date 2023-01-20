@@ -6,11 +6,11 @@
     android:layout_height="match_parent"
     android:background="@color/black_background"
     tools:context=".MainActivity">
-    <!--App Bar-->
+
     <RelativeLayout
         android:id="@+id/appbar_section"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="80dp"
         android:background="@color/light_black"
         android:paddingHorizontal="16dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -39,7 +39,6 @@
             android:src="@drawable/gamer" />
 
         <ImageView
-            android:padding="5dp"
             android:id="@+id/favorite_icon"
             android:layout_width="36dp"
             android:layout_height="36dp"
@@ -47,6 +46,7 @@
             android:layout_centerVertical="true"
             android:background="@drawable/favorite_border"
             android:contentDescription="@string/user_logo"
+            android:padding="5dp"
             android:src="@drawable/ic_favorite"
             app:tint="@color/pink_heart" />
 
@@ -56,38 +56,25 @@
         android:id="@+id/best_game_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/appbar_section"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:text="@string/best_game_title"
         android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/appbar_section" />
+        app:layout_constraintTop_toBottomOf="@+id/appbar_section" />
 
-    <ImageView
-        android:id="@+id/refresh_icon"
-        android:layout_width="36dp"
-        android:layout_height="36dp"
-        android:contentDescription="@string/refresh"
-        android:src="@drawable/ic_refresh"
-        app:layout_constraintBottom_toBottomOf="@+id/best_game_tv"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.95"
-        app:layout_constraintStart_toEndOf="@+id/best_game_tv"
-        app:layout_constraintTop_toTopOf="@+id/best_game_tv"
-        app:tint="@color/light_blue" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_best_game"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:orientation="horizontal"
         android:paddingHorizontal="12dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/best_game_tv"
         tools:listitem="@layout/game_row_layout" />
@@ -121,7 +108,7 @@
         app:tint="@color/light_red" />
 
     <TextView
-        android:id="@+id/error_tv"
+        android:id="@+id/error_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"

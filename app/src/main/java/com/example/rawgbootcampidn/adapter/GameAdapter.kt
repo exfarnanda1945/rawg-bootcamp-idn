@@ -28,7 +28,9 @@ class GameAdapter : RecyclerView.Adapter<GameAdapter.GameViewHolder>() {
         fun bind(item: GameResult) {
             binding.apply {
                 data = item
-                onItemCallBack.onItemClickCallback(item)
+                itemView.setOnClickListener {
+                    onItemCallBack.onItemClickCallback(item)
+                }
             }
         }
     }

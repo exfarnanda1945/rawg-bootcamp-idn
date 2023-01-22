@@ -1,7 +1,8 @@
 package com.example.rawgbootcampidn
 
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
@@ -41,6 +42,7 @@ class MainActivity : AppCompatActivity() {
                         errorTv = true,
                         errorImg = true
                     )
+                    Toast.makeText(this,result.errorMessage,Toast.LENGTH_SHORT).show()
                 }
                 is NetworkResult.Success -> {
                     binding.rvBestGame.apply {
@@ -55,7 +57,9 @@ class MainActivity : AppCompatActivity() {
                     }
                     gameAdapter.setOnItemClickCallback(object : GameAdapter.IOnItemCallBack {
                         override fun onItemClickCallback(data: GameResult) {
-                            Log.d("nah", "bruh")
+                            val intent = Intent(this@MainActivity,DetailActivity::class.java)
+                            intent.putExtra(DetailActivity.EXTRA_GAME,data)
+                            startActivity(intent)
                         }
 
                     })

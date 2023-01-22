@@ -16,6 +16,7 @@
             android:exported="false" />
         <activity
             android:name=".DetailActivity"
+            android:theme="@style/Theme.RAWGBootcampIDN.DetailActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

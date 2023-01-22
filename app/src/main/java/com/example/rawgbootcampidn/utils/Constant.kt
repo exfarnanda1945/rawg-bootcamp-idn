@@ -7,4 +7,7 @@ object Constant {
     const val QUERY_PAGE_SIZE = "page_size"
     const val QUERY_ORDERING ="ordering"
     const val QUERY_DATES="dates"
+
+    // ROOM
+    const val GAME_TABLE_NAME = "game_table"
 }

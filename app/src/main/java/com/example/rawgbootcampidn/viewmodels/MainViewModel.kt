@@ -13,30 +13,32 @@ import com.example.rawgbootcampidn.utils.Constant.QUERY_DATES
 import com.example.rawgbootcampidn.utils.Constant.QUERY_ORDERING
 import com.example.rawgbootcampidn.utils.Constant.QUERY_PAGE_SIZE
 import kotlinx.coroutines.launch
-import kotlin.collections.HashMap
 import kotlin.collections.set
 
-class MainViewModel:ViewModel() {
+class MainViewModel() : ViewModel() {
+
+    // API
     private val gameService = Service.GameService
     private val remote = RemoteDataSource(gameService)
+
     private val repository = Repository(remote)
 
-    private var _listGame:MutableLiveData<NetworkResult<Game>> = MutableLiveData()
-    val listGame:LiveData<NetworkResult<Game>> = _listGame
+    private var _listGame: MutableLiveData<NetworkResult<Game>> = MutableLiveData()
+    val listGame: LiveData<NetworkResult<Game>> = _listGame
 
     init {
         fetchListGame()
     }
 
-    private fun fetchListGame(){
+    private fun fetchListGame() {
         viewModelScope.launch {
-            repository.remote.getGameList(applyQueries()).collect{result ->
+            repository.remote?.getGameList(applyQueries())?.collect { result ->
                 _listGame.value = result
             }
         }
     }
 
-    private fun applyQueries():HashMap<String, String> {
+    private fun applyQueries(): HashMap<String, String> {
         val queries: HashMap<String, String> = HashMap()
         queries[QUERY_PAGE_SIZE] = "20"
         queries[QUERY_ORDERING] = "-added"

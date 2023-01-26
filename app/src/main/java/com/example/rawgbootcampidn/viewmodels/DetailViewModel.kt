@@ -1,21 +1,30 @@
 package com.example.rawgbootcampidn.viewmodels
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import android.app.Application
+import androidx.lifecycle.*
+import com.example.rawgbootcampidn.data.LocalDataSource
 import com.example.rawgbootcampidn.data.RemoteDataSource
 import com.example.rawgbootcampidn.data.Repository
+import com.example.rawgbootcampidn.data.database.GameDatabase
+import com.example.rawgbootcampidn.data.database.GameEntity
 import com.example.rawgbootcampidn.data.network.Service
 import com.example.rawgbootcampidn.data.network.handler.NetworkResult
 import com.example.rawgbootcampidn.model.GameDetail
 import com.example.rawgbootcampidn.model.Screenshots
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class DetailViewModel : ViewModel() {
+class DetailViewModel(application: Application) : AndroidViewModel(application) {
+
+    // API
     private val gameService = Service.GameService
     private val remote = RemoteDataSource(gameService)
-    private val repository = Repository(remote)
+
+    // LOCAL
+    private val gameDao = GameDatabase.getDatabase(application).gameDao()
+    private val local = LocalDataSource(gameDao)
+
+    private val repository = Repository(remote,local)
 
     private var _gameDetail: MutableLiveData<NetworkResult<GameDetail>> = MutableLiveData()
     val gameDetail: LiveData<NetworkResult<GameDetail>> = _gameDetail
@@ -25,7 +34,7 @@ class DetailViewModel : ViewModel() {
 
     fun fetchGameDetail(gameId: Int) {
         viewModelScope.launch {
-            repository.remote.getGameDetailById(gameId).collect { result ->
+            repository.remote!!.getGameDetailById(gameId).collect { result ->
                 _gameDetail.value = result
             }
         }
@@ -33,10 +42,26 @@ class DetailViewModel : ViewModel() {
 
     fun fetchScreenshotsGame(gameId: Int) {
         viewModelScope.launch {
-            repository.remote.getGameScreenshotById(gameId).collect { result ->
+            repository.remote!!.getGameScreenshotById(gameId).collect { result ->
                 _screenshotsGame.value = result
             }
         }
     }
+
+    val favoriteGameList:LiveData<List<GameEntity>> = repository.local!!.listGame().asLiveData()
+    fun insertFavoriteGame(gameEntity: GameEntity){
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.local!!.insertGame(gameEntity)
+        }
+    }
+
+    fun deleteFavoriteGame(gameEntity: GameEntity){
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.local!!.deleteGame(gameEntity)
+        }
+    }
+
+
+
 
 }

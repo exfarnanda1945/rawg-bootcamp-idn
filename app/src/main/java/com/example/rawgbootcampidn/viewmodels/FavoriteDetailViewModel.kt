@@ -33,7 +33,7 @@ class FavoriteDetailViewModel(application: Application):AndroidViewModel(applica
             }
         }
     }
-    
+
     fun deleteFavoriteGame(gameEntity: GameEntity){
         viewModelScope.launch(Dispatchers.IO) {
             repository.local!!.deleteGame(gameEntity)

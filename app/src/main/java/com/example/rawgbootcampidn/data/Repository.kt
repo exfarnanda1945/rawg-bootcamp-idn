@@ -1,3 +1,3 @@
 package com.example.rawgbootcampidn.data
 
-class Repository(val remote: RemoteDataSource, val local: LocalDataSource)
+class Repository(val remote: RemoteDataSource? = null, val local:LocalDataSource? = null)

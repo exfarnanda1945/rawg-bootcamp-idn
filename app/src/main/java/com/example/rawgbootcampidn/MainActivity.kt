@@ -24,6 +24,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         supportActionBar?.hide()
 
+        binding.favoriteIcon.setOnClickListener {
+            val intent = Intent(this@MainActivity,FavoriteActivity::class.java)
+            startActivity(intent)
+        }
+
         mainViewModel.listGame.observe(this) { result ->
             when (result) {
                 is NetworkResult.Loading -> {

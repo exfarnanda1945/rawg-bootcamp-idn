@@ -17,6 +17,7 @@ class RemoteDataSource(private val gameApi: GameApi) {
             emit(NetworkResult.Loading(true))
             val games = gameApi.getGameList(queries)
 
+
             // request data successful
             if (games.isSuccessful) {
                 val responseBody = games.body()
@@ -28,7 +29,7 @@ class RemoteDataSource(private val gameApi: GameApi) {
                 }
             } else {
                 // request data failed
-                Log.d("apiServiceError", "statusCode:${games.code()}, message:${games.message()}")
+                Log.d("apiServiceError", "statusCode:${news.code()}, message:${news.message()}")
                 emit(NetworkResult.Error("Failed to fetch data from server."))
             }
         } catch (e: Exception) {

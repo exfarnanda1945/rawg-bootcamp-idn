@@ -1,4 +1,4 @@
-package com.example.rawgbootcampidn
+package com.example.rawgbootcampidn.ui
 
 import android.content.Intent
 import android.os.Bundle
@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.hide()
 
         binding.favoriteIcon.setOnClickListener {
-            val intent = Intent(this@MainActivity,FavoriteActivity::class.java)
+            val intent = Intent(this@MainActivity, FavoriteActivity::class.java)
             startActivity(intent)
         }
 
@@ -36,7 +36,6 @@ class MainActivity : AppCompatActivity() {
                         recyclerView = false,
                         progressBar = true,
                         errorTv = false,
-                        errorImg = false
                     )
                 }
                 is NetworkResult.Error -> {
@@ -62,7 +61,7 @@ class MainActivity : AppCompatActivity() {
                     }
                     gameAdapter.setOnItemClickCallback(object : GameAdapter.IOnItemCallBack {
                         override fun onItemClickCallback(data: GameResult) {
-                            val intent = Intent(this@MainActivity,DetailActivity::class.java)
+                            val intent = Intent(this@MainActivity, DetailActivity::class.java)
                             intent.putExtra(DetailActivity.EXTRA_GAME,data)
                             startActivity(intent)
                         }
@@ -83,13 +82,11 @@ class MainActivity : AppCompatActivity() {
     private fun handleUi(
         recyclerView: Boolean,
         progressBar: Boolean,
-        errorTv: Boolean,
-        errorImg: Boolean
+        errorTv: Boolean
     ) {
         binding.apply {
             rvBestGame.isVisible = recyclerView
             progressbar.isVisible = progressBar
-            errorIcon.isVisible = errorImg
             errorText.isVisible = errorTv
         }
     }

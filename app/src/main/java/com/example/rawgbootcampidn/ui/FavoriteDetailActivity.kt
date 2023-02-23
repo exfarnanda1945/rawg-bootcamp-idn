@@ -1,4 +1,4 @@
-package com.example.rawgbootcampidn
+package com.example.rawgbootcampidn.ui
 
 import android.content.Intent
 import android.os.Bundle

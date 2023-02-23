@@ -1,4 +1,4 @@
-package com.example.rawgbootcampidn
+package com.example.rawgbootcampidn.ui
 
 import android.os.Bundle
 import android.widget.Toast
@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.rawgbootcampidn.R
 import com.example.rawgbootcampidn.adapter.ScreenshotGameAdapter
 import com.example.rawgbootcampidn.data.database.GameEntity
 import com.example.rawgbootcampidn.data.network.handler.NetworkResult

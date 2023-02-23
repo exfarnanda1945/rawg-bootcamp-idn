@@ -6,7 +6,9 @@ import androidx.room.PrimaryKey
 import com.example.rawgbootcampidn.model.GameDetail
 import com.example.rawgbootcampidn.utils.Constant.GAME_TABLE_NAME
 import kotlinx.parcelize.Parcelize
-
+/*
+*
+* */
 @Entity(tableName = GAME_TABLE_NAME)
 @Parcelize
 data class GameEntity(

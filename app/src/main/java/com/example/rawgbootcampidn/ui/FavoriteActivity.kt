@@ -1,4 +1,4 @@
-package com.example.rawgbootcampidn
+package com.example.rawgbootcampidn.ui
 
 import android.content.Intent
 import android.os.Bundle
@@ -45,7 +45,7 @@ class FavoriteActivity : AppCompatActivity() {
                     setData(result)
                     setOnItemClickCallback(object:FavoriteAdapter.IOnFavoriteItemCallBack{
                         override fun onFavoriteItemClickCallback(data: GameEntity) {
-                            val intent = Intent(this@FavoriteActivity,FavoriteDetailActivity::class.java)
+                            val intent = Intent(this@FavoriteActivity, FavoriteDetailActivity::class.java)
                             intent.putExtra(FavoriteDetailActivity.EXTRA_FAVORITE_GAME,data)
                             startActivity(intent)
                         }
